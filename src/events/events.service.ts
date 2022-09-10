@@ -92,7 +92,9 @@ export class EventsService {
 
   @Get('events')
   async getEventsWithWorkshops() {
-    throw new Error('TODO task 1');
+    const res = await this.eventRepository.createQueryBuilder('event').
+    innerJoinAndSelect('event.workshops','w').getMany();
+    return res;
   }
 
   /*
